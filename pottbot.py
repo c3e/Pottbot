@@ -46,7 +46,7 @@ class Pottbot(pydle.Client):
                     elif len(cmd) >= 3:
                         # PUBLISH ON MQTT TOPIC
                         msg = " ".join(cmd[2:])
-                        mqtt.single(cmd[1], payload=None, qos=0, retain=False, hostname="localhost",
+                        mqtt.single(cmd[1], payload=msg, qos=0, retain=False, hostname="localhost",
                                     port=1883, client_id="Pottbot", keepalive=60, will=None, auth=None, tls=None,
                                     protocol=mqtt.MQTTv311, transport="tcp")
                 else:
