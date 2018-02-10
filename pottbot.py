@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 import pydle
 import paho.mqtt.client as mqtt
+import paho.mqtt.publish as publish
 
 CHANNEL = "#chaospott"
 OPS_ONLY = True
@@ -46,7 +49,7 @@ class Pottbot(pydle.Client):
                     elif len(cmd) >= 3:
                         # PUBLISH ON MQTT TOPIC
                         msg = " ".join(cmd[2:])
-                        mqtt.single(cmd[1], payload=msg, qos=0, retain=False, hostname="localhost",
+                        publish.single(cmd[1], payload=msg, qos=0, retain=False, hostname="localhost",
                                     port=1883, client_id="Pottbot", keepalive=60, will=None, auth=None, tls=None,
                                     protocol=mqtt.MQTTv311, transport="tcp")
                 else:
